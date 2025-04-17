@@ -1,0 +1,1 @@
+rootProject.name = "monefy_android_test_automation"

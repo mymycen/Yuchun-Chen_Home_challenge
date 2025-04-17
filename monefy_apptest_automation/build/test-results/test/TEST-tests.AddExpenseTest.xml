@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.AddExpenseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-04-17T23:07:05.036Z" hostname="MacBook-Pro-MBP-L1278" time="13.676">
+  <properties/>
+  <testcase name="completeAddExpenseFlow()" classname="tests.AddExpenseTest" time="13.676"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
