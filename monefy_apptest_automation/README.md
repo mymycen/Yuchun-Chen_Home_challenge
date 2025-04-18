@@ -29,8 +29,8 @@ This repository contains an end-to-end (E2E) test suite for the Monefy Android a
 #### 1. Clone this repo
 
 ```bash
-git clone https://github.com/mymycen/Yuchun-Chen_Home_challenge/monefy_apptest_automation.git
-cd monefy-android-test-automation
+git clone https://github.com/mymycen/Yuchun-Chen_Home_challenge.git
+cd monefy_apptest_automation
 ```
 
 #### 2. Install Android SDK components

@@ -3,12 +3,12 @@
 This repository contains two main modules:
 
 1. **Petstore API**  
-   Location: [`petstore-api/README.md`](petstore-api/README.md)  
+   Location: [`petstore-api-tests/README.md`](petstore-api-tests/README.md)  
    - A RESTful API implementation following the Swagger Petstore specification.
    - Includes source code, documentation, and integration tests.
 
 2. **Monefy Android Test Automation**  
-   Location: [`monefy-android-test-automation/README.md`](monefy-android-test-automation/README.md)  
+   Location: [`monefy_apptest_automation/README.md`](monefy_apptest_automation/README.md)  
    - End-to-end test suite for the Monefy mobile application using Kotlin, JUnit 5, and Appium.
    - Includes setup instructions, sample tests, and Docker integration.
 
@@ -18,11 +18,12 @@ This repository contains two main modules:
 
 ```
 .
-├── petstore-api/
+├── petstore-api-tests/
 │   └── README.md                  # Petstore API module documentation
 │   └── src/                       # API source code
 │   └── tests/                     # Integration tests for Petstore API
-├── monefy-android-test-automation/
+|   └── Dockerfile                 # Container setup for tests
+├── monefy_apptest_automation/
 │   └── README.md                  # Monefy automation module documentation
 │   └── apps/                      # APK files
 │   └── src/                       # Test code (Kotlin & utilities)
@@ -36,9 +37,9 @@ This repository contains two main modules:
 
 1. **Navigate to a module**  
    ```bash
-   cd petstore-api
+   cd petstore-api-tests
    # or
-   cd monefy-android-test-automation
+   cd monefy_apptest_automation
    ```
 
 2. **Follow the instructions in that module's README**  

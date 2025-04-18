@@ -4,18 +4,25 @@ This project automates CRUD testing of the Swagger Petstore `/pet` endpoint usin
 
 ## 🚀 Quick Start
 
-1. **Install dependencies**
+1. **Clone this repo**
+
+```bash
+git clone https://github.com/mymycen/Yuchun-Chen_Home_challenge.git
+cd monefy_apptest_automation
+```
+
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-2. **Run mock server + tests**
+3. **Run mock server + tests**
    ```bash
    npm test
    ```
    This script will:
-   - Spin up `json-server` on `http://localhost:3000` (serving `db.json`)
+   - Spin up `json-server` on `http://localhost:3001` (serving `db.json`)
    - Wait 1 second
    - Execute the Jest test suite against that mock API
 

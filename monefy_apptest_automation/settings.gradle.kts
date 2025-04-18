@@ -1,1 +1,1 @@
-rootProject.name = "monefy_android_test_automation"
+rootProject.name = "monefy_apptest_automation"
