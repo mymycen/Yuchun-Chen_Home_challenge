@@ -54,18 +54,54 @@
 
 ## 4. Risk Mitigation
 
-1. **Data Integrity**  
-   - Implement robust conflict resolution and user notifications on sync errors.  
-   - Add data backup prompts before major edits or category changes.
-2. **UI Stability**  
-   - Add automated UI tests for orientation changes and long text inputs.  
-   - Enforce constraints on input lengths in UI fields.
-3. **Localization Coverage**  
-   - Integrate a translation-proofing process with native speakers.  
-   - Automate locale-specific UI scans to catch untranslated strings.
-4. **Performance & Crash Monitoring**  
-   - Include crash-reporting (e.g., Crashlytics) to capture exceptions like keypad overlay.  
-   - Monitor app launch times and memory usage on various iOS versions.
-5. **Security & Privacy**  
-   - Ensure all data at rest/in transit is encrypted.  
-   - Prompt for biometric authentication before showing sensitive financial summaries.
+1. **Subscription & Restore Logic**  
+   - **Bug**: “Restore” button is non‑functional and re‑installed subscriptions aren’t skipped.  
+   - **Mitigation**: Implement automated end‑to‑end regression tests covering:
+     - First‑run with no subscription
+     - First‑run with existing subscription
+     - Restore‑flow twice in a row  
+     Ensure hooks in the purchase‑restore API are stubbed/mocked in CI to validate both success and failure responses.
+
+2. **UI Overlay & Readability**  
+   - **Bug**: Transaction messages overlap background content; sort colors fallen back to grey.  
+   - **Mitigation**: Add visual‑regression tests (e.g. screenshot comparisons) for:
+     - Adding a transaction
+     - Sorting lists  
+     Incorporate a “contrast checker” into CI that flags overlapping or low‑contrast UI elements.
+
+3. **Category & Budget Integrity**  
+   - **Bug**: Pie chart omits older categories; merge action deletes the wrong category and mislabels success.  
+   - **Mitigation**:  
+     - Write data‑driven tests that:
+       1. Create multiple categories
+       2. Merge pairs in different orders  
+       3. Verify both the retained category and merge message text  
+     - Add a contract test against the backend to ensure all categories (not just latest) are fetched and represented.
+
+4. **Localization Consistency**  
+   - **Bug**: Balance text remains in previous language after switching locale.  
+   - **Mitigation**:  
+     - Automate locale‑switch tests covering each supported language.  
+     - Integrate a continuous l10n‑audit step using tools like **i18n-check** to find untranslated or stale strings.
+     - Add a smoke test after changing language that asserts all key labels (balance, button texts) update correctly.
+
+5. **Data Sync & State Accuracy**  
+   - **Bug**: Balance view doesn’t reflect updated settings; silent sync failures risk data loss.  
+   - **Mitigation**:  
+     - Implement integration tests that:
+       - Toggle offline/online states
+       - Perform updates on two simulated devices  
+       - Assert conflict‑resolution policies and user notifications are exercised.  
+     - Surface sync errors via in‑app banners or logs, and monitor them in CI (e.g. fail build if any uncaught sync‑error code appears).
+
+6. **Usability & Navigation Depth**  
+   - **Minor**: Deleting requires navigating two levels.  
+   - **Mitigation**: Add exploratory and automated UI workflows to measure “tap depth” for critical actions—flag anything > 2 taps as an ergonomic risk for further UX review.
+
+7. **Crash & Performance Monitoring**  
+   - **Mitigation**:  
+     - Integrate a crash‑reporting SDK (e.g. Crashlytics) to catch silent failures (like the keypad overlay bug).  
+     - Add performance‑profiling tests for startup, chart rendering, and list sorting to detect regressions early.
+
+---
+
